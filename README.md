@@ -42,7 +42,37 @@ $ brew install --cask docker
 
 #### Windows Users
 
-Download and install from here: https://docs.docker.com/desktop/install/windows-install/
+Windows is a little trickier...
+
+##### WSL Setup
+Installing Docker requires the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) and the Ubuntu shell. Open PowerShell and type: 
+
+```shell
+wsl --install -d ubuntu
+```
+
+Open the WSL and create a user account for linux. 
+
+##### Docker Desktop
+
+Download and install Docker from here: https://docs.docker.com/desktop/install/windows-install/
+
+Once the Docker Desktop software is installed. Go into the Settings and click on `Resources` and then `WSL Integration`. Make sure that `Ubuntu` is Enabled.
+
+##### Make sure it works!
+
+Run Ubuntu in Windows and then type:
+```shell
+sudo su -
+```
+
+Then type:
+
+```shell
+docker
+```
+
+This should print the Docker help menu.
 
 ### What does a Docker Image look like?
 

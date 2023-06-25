@@ -6,7 +6,7 @@
 
 ### What is Docker?
 
-![That's a big question](https://31.media.tumblr.com/a4a72524f0bc49663881898367b5246a/tumblr_ns8pm9eEwN1tq4of6o1_540.gif)
+_![That's a big question](https://31.media.tumblr.com/a4a72524f0bc49663881898367b5246a/tumblr_ns8pm9eEwN1tq4of6o1_540.gif)_
 
 In their own words:
 
@@ -42,7 +42,42 @@ $ brew install --cask docker
 
 #### Windows Users
 
-Download and install from here: https://docs.docker.com/desktop/install/windows-install/
+Windows is a little trickier...
+
+##### WSL Setup
+Installing Docker requires the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) and the Ubuntu shell. Open PowerShell and type: 
+
+```shell
+wsl --install -d ubuntu
+```
+
+Then run:
+```shell
+wsl --set-default ubuntu
+```
+
+Open the WSL and create a user account for linux. 
+
+##### Docker Desktop
+
+Download and install Docker from here: https://docs.docker.com/desktop/install/windows-install/
+
+Once the Docker Desktop software is installed. Go into the Settings and click on `Resources` and then `WSL Integration`. Make sure that `Ubuntu` is Enabled.
+
+##### Make sure it works!
+
+Run Ubuntu in Windows and then type:
+```shell
+sudo su -
+```
+
+Then type:
+
+```shell
+docker
+```
+
+This should print the Docker help menu.
 
 ### What does a Docker Image look like?
 
@@ -76,7 +111,16 @@ Let's look at Redis, as it's a very popular and useful key-value store and cachi
 
 ### What is Redis?
 
+On their website, they define themselves as:
+> The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker.
 
+They also have a nice chart showing features:
+
+_![Redis Features](docs/redis_features.png)_
+
+On my team, we make use of a [library]([https://python-rq.org]) called `RQ-Python` that builds a queuing system for Python jobs on top of Redis. We create thousands of jobs each night and have hundreds of worker containers that perform the jobs.
+
+Ok, let's get started.
 
 ### Pull the Redis image
 
